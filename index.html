@@ -1,23 +1,635 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
+   <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MovingCompany",
+      "name": "방배동이사 전문 이사 서비스",
+      "image": "https://yourdomain.com/image/moving_truck.jpg",
+      "url": "https://yourdomain.com/bangbae-moving",
+      "telephone": "010-1234-5678",
+      "priceRange": "₩500,000 - ₩5,000,000",
+      "description": "2026년 최신 정보를 반영한 방배동 포장이사, 반포장이사 전문 서비스. 합리적인 가격으로 강남권 이사를 신속하고 안전하게 진행합니다.",
+      "areaServed": [
+        {"@type": "State", "name": "서울특별시"},
+        {"@type": "City", "name": "서초구"},
+        {"@type": "City", "name": "강남구"},
+        {"@type": "City", "name": "송파구"}
+      ],
+      "brand": {
+          "@type": "Brand",
+          "name": "강남 이사 전문가 그룹"
+      },
+      "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "850"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "포장이사 서비스",
+      "provider": {
+        "@type": "Organization",
+        "name": "방배동이사 전문 이사 서비스",
+        "url": "https://yourdomain.com/bangbae-moving"
+      },
+      "areaServed": "대한민국, 특히 방배동 및 강남권",
+      "description": "포장이사, 반포장이사, 보관이사 등 방배동에 최적화된 맞춤형 이사 서비스",
+      "offers": [
+        {
+          "@type": "Offer",
+          "itemOffered": {"@type": "Service", "name": "방배동 포장이사"},
+          "price": "1,000,000",
+          "priceCurrency": "KRW",
+          "description": "모든 짐 포장부터 정리까지 책임지는 프리미엄 서비스"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {"@type": "Service", "name": "방배동 반포장이사"},
+          "price": "700,000",
+          "priceCurrency": "KRW",
+          "description": "큰 짐만 포장하고 잔짐은 고객이 정리하는 실속형 서비스"
+        }
+      ]
+    }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&display=swap');
+        :root {
+            --primary-color: #4CAF50; /* 부드러운 그린 */
+            --secondary-color: #FF9800; /* 따뜻한 오렌지 */
+            --background-light: #f4f6f9;
+            --text-dark: #2c3e50;
+            --text-light: #ffffff;
+            --section-bg: #ffffff;
+            --border-color: #eceff1;
+        }
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+            background-color: var(--background-light);
+            color: var(--text-dark);
+        }
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #66BB6A 100%);
+            color: var(--text-light);
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 900;
+        }
+        header p {
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-top: 1.5rem;
+        }
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            padding-bottom: 5px;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        nav a:hover {
+            color: #FFEB3B; /* 밝은 노란색 */
+            border-bottom: 3px solid #FFEB3B;
+        }
+        main {
+            max-width: 1100px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+        section {
+            background-color: var(--section-bg);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--primary-color);
+        }
+        h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            border-left: 6px solid var(--secondary-color);
+            padding-left: 15px;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        h3 {
+            color: #387038;
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 5px;
+        }
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        th, td {
+            padding: 1rem 1.2rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        th {
+            background-color: #E8F5E9; /* 연한 그린 */
+            color: var(--text-dark);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+        }
+        tr:nth-child(even) {
+            background-color: #fcfcfc;
+        }
+        tr:hover {
+            background-color: #f1f8e9;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            font-weight: 700;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 1.5rem;
+            transition: background-color 0.3s ease, transform 0.2s;
+            box-shadow: 0 4px 10px rgba(255,152,0,0.3);
+            text-transform: uppercase;
+        }
+        .cta-button:hover {
+            background-color: #F57C00;
+            transform: translateY(-2px);
+        }
+        .keyword-tags {
+            margin: 2rem 0;
+            padding: 1rem 0;
+            border-top: 1px dashed var(--border-color);
+            border-bottom: 1px dashed var(--border-color);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .keyword-tags a {
+            background-color: #E3F2FD; /* 연한 블루 */
+            color: #1976D2; /* 진한 블루 */
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            font-weight: 500;
+        }
+        .keyword-tags a:hover {
+            background-color: #BBDEFB;
+        }
+        .info-box {
+            background-color: #F0FFF4; /* 아주 연한 그린 */
+            border-left: 5px solid var(--primary-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        .info-box p {
+            margin: 0;
+            font-weight: 500;
+        }
+        .quote-form {
+            background-color: #f0f4f7;
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+        .quote-form label {
+            display: block;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        .quote-form input[type="text"],
+        .quote-form input[type="tel"],
+        .quote-form select,
+        .quote-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+        .quote-form button {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+        }
+        .quote-form button:hover {
+            background-color: #F57C00;
+        }
+        .faq dl {
+            margin-top: 1rem;
+        }
+        .faq dt {
+            font-weight: 700;
+            margin-top: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            background-color: #f7f7f7;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid var(--secondary-color);
+            transition: background-color 0.3s;
+        }
+        .faq dt:hover {
+            background-color: #f0f0f0;
+        }
+        .faq dt.active {
+            background-color: #fff3e0; /* 연한 오렌지 */
+        }
+        .faq dd {
+            margin-left: 0;
+            margin-top: 10px;
+            padding: 15px;
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            display: none;
+        }
+        .faq dt.active + dd {
+            display: block;
+        }
+        .trust-links {
+            list-style: none;
+            padding: 0;
+            margin-top: 2rem;
+            border-top: 2px solid var(--primary-color);
+            padding-top: 1.5rem;
+        }
+        .trust-links li {
+            margin-bottom: 0.8rem;
+        }
+        .trust-links a {
+            color: #1976D2;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .trust-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* 2026년 이사 트렌드 표 스타일 */
+        .trend-table th {
+            background-color: #388E3C;
+            color: var(--text-light);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            background-color: #37474F; /* 어두운 그레이 */
+            margin-top: 3rem;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🏡 2026년 **방배동이사** | 합리적인 **포장이사** 비용과 프리미엄 서비스</h1>
+        <p>강남 서초 이사 전문가, 고객 만족도 최상! **방배동 포장이사**는 믿을 수 있는 업체에 맡기세요.</p>
+        <nav>
+            <ul>
+                <li><a href="#service">서비스 종류</a></li>
+                <li><a href="#price">2026년 가격 안내</a></li>
+                <li><a href="#area">강남권 주요 이사 지역</a></li>
+                <li><a href="#inquiry">무료 견적 문의</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <main>
-      <h1>Home page</h1>
+        <section id="service">
+            <h2>🥇 **방배동이사** 서비스, 왜 저희를 선택해야 할까요?</h2>
+            <p><strong>방배동</strong>은 서초구의 핵심 주거 지역으로, 아파트, 빌라, 고급 주택 등 다양한 주거 형태를 가지고 있습니다. 이러한 특성상, <strong>방배동 포장이사</strong>는 단순한 짐 운반을 넘어, 주거 환경에 대한 깊은 이해와 세심한 맞춤 서비스가 필수적입니다. 저희는 다년간의 경험과 노하우를 바탕으로 **강남이사** 환경에 최적화된 프리미엄 서비스를 제공하고 있습니다. 2026년의 새로운 이사 트렌드와 고객님의 라이프스타일을 반영한 맞춤형 이사 솔루션을 경험해보세요. 특히 고가구나 예술품이 많은 **고급이사** 고객님들께는 <strong>방배동</strong> 특화된 특수 포장 및 운송 기술을 적용하여 최고의 안전을 보장합니다.</p>
+
+            <h3>이사 서비스 종류 및 특징</h3>
+            <ul>
+                <li><strong>프리미엄 포장이사:</strong> 짐 포장에서부터 정리, 청소까지 모든 것을 전담하는 올인원 서비스. 고객님은 손 하나 까딱하지 않고 새로운 공간에서 바로 생활하실 수 있습니다.</li>
+                <li><strong>실속형 반포장이사:</strong> 큰 짐은 저희가 포장 및 운반하고, 잔짐(주방용품, 의류 등)은 고객님께서 직접 정리하여 **이사비용**을 절감할 수 있는 효율적인 방식입니다.</li>
+                <li><strong>안전한 보관이사:</strong> 인테리어, 리모델링, 혹은 장기 해외 체류로 인해 짐을 잠시 맡겨야 할 경우, 철저한 온/습도 관리가 되는 전용 창고에 안전하게 보관해 드립니다.</li>
+                <li><strong>소형 이사 및 원룸이사:</strong> <strong>방배동</strong> 오피스텔이나 원룸 거주 고객을 위한 맞춤형 서비스로, 합리적인 가격에 신속한 이사를 제공합니다.</li>
+            </ul>
+
+            <div class="info-box">
+                <p>💡 **2026년 이사 트렌드:** 최근 **강남포장이사** 시장에서는 '미니멀리즘'과 '프리미엄 서비스'의 결합이 두드러지고 있습니다. 이사 전 불필요한 짐을 정리(버리기 서비스 연계)하고, 남은 짐은 최고급 포장재로 안전하게 운반하는 방식이 인기를 얻고 있습니다. 저희는 이러한 트렌드에 맞춰 차별화된 서비스를 제공합니다.</p>
+            </div>
+            
+            <a href="#inquiry" class="cta-button" aria-label="무료 방문 견적 신청">지금 바로 무료 방문 견적 신청하기</a>
+
+            <h3>**방배동이사**의 성공적인 준비를 위한 심층 가이드 (2026년 기준)</h3>
+            <p><strong>방배동</strong>으로의 이사를 계획하고 계신다면, 성공적인 이사를 위해 체계적인 준비가 필요합니다. 2026년 이사 시장은 더욱 전문화되고 개인 맞춤형 서비스가 강화되는 추세입니다. 특히 **서초구이사**는 다른 지역보다 높은 수준의 서비스 품질과 세심한 접근이 요구됩니다. 저희는 고객님의 소중한 자산을 안전하게 옮기기 위해 이사 4주 전부터 당일 마무리까지 단계별로 완벽한 가이드를 제공합니다.</p>
+
+            <h4>1. 이사 4주 전: 계획 및 업체 선정 (키워드: **방배동포장이사**, **이사비용**, **강남이사전문**)</h4>
+            <p>이사를 결정하는 순간 가장 먼저 해야 할 일은 이사 날짜 확정과 **방배동포장이사** 전문 업체를 선정하는 것입니다. 최소 3곳 이상의 업체에서 **무료 방문 견적**을 받는 것이 중요합니다. 단순히 저렴한 **이사비용**만을 기준으로 삼기보다는, 서비스의 질, 보험 가입 여부(피해보상 이행보증보험), 그리고 실제 고객 후기를 종합적으로 검토해야 합니다. 특히 **강남이사전문** 업체는 <strong>반포동이사</strong>, <strong>압구정동이사</strong> 등 강남권 복잡한 주차 환경과 고급 주택 단지의 특성을 잘 이해하고 있어 예상치 못한 문제 발생을 최소화할 수 있습니다. 2026년 현재, **방배동** 지역의 이사 성수기는 여전히 봄(3~5월)과 가을(9~11월)이므로, 이 시기에 이사를 계획한다면 최소 2달 전 예약이 필수입니다. 견적 시 '손 없는 날'이나 주말을 피하면 **이사비용**을 절감할 수 있는 팁도 있습니다.</p>
+
+            <h4>2. 이사 2주 전: 불필요한 짐 정리 및 행정 처리 (키워드: **대치동이사**, **도곡동이사**, **개포동이사**)</h4>
+            <p>본격적인 이사 전, 불필요한 물건을 정리하는 것은 짐의 양을 줄여 **이사비용**을 낮추는 가장 효과적인 방법입니다. 의류, 서적, 사용하지 않는 가전제품 등을 기부하거나 폐기물 스티커를 부착하여 버리세요. 강남구 내의 <strong>대치동이사</strong>, <strong>도곡동이사</strong>, <strong>개포동이사</strong> 지역은 학군 이사가 많아 서적이나 학습 자료의 양이 방대할 수 있습니다. 이 경우, 별도의 '서재 전문 포장' 서비스를 요청하여 훼손을 방지해야 합니다. 또한, 전입신고, 전출신고, 우편물 주소 변경, 각종 공과금 정산 등의 행정 처리를 미리 완료해야 이사 당일 혼란을 막을 수 있습니다. 인터넷 및 케이블 TV 이전 설치 예약도 이 시기에 반드시 진행해야 합니다.</p>
+
+            <h4>3. 이사 1주 전: 품목별 포장 준비 및 계약 재확인 (키워드: **청담동이사**, **논현동이사**, **역삼동이사**)</h4>
+            <p>**청담동이사**나 **논현동이사**처럼 트렌디한 지역의 경우, 고급 의류와 명품이 많습니다. 이사 1주 전에는 귀금속, 현금, 중요 서류 등은 별도로 분리하여 고객님께서 직접 운반할 수 있도록 준비해야 합니다. 이사 업체와의 계약 내용을 다시 한번 확인하고, 특이 사항(에어컨 이전 설치, 벽걸이 TV 탈착 등)이 누락되지 않았는지 점검하세요. **역삼동이사**의 경우, 고층 오피스텔 이사가 많으므로, 사다리차 이용 가능 여부와 엘리베이터 사용 예약 시간을 최종적으로 확인하는 것이 중요합니다. 이사 당일 필요한 비상용품(세면도구, 간단한 식사 등) 박스를 따로 마련해 두는 것도 좋은 방법입니다.</p>
+            
+            <figure>
+                <figcaption><strong>강남권 주요 지역별 이사 난이도 및 평균 소요 시간 (2026년 예측)</strong></figcaption>
+                <table class="trend-table">
+                    <thead>
+                        <tr>
+                            <th>지역명</th>
+                            <th>주요 주거 형태</th>
+                            <th>이사 난이도 (5점 만점)</th>
+                            <th>평균 작업 시간 (4인 기준)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>방배동</strong></td>
+                            <td>고급빌라, 중대형 아파트</td>
+                            <td>4점 (주차 및 진입로 협소)</td>
+                            <td>8~10시간</td>
+                        </tr>
+                        <tr>
+                            <td><strong>삼성동이사</strong></td>
+                            <td>고급 주상복합, 대형 아파트</td>
+                            <td>3.5점 (엘리베이터 사용 규정 까다로움)</td>
+                            <td>7~9시간</td>
+                        </tr>
+                        <tr>
+                            <td><strong>잠원동이사</strong></td>
+                            <td>재건축/신축 아파트</td>
+                            <td>3점 (관리 사무소 규정 준수 중요)</td>
+                            <td>6~8시간</td>
+                        </tr>
+                        <tr>
+                            <td><strong>신사동이사</strong></td>
+                            <td>오피스텔, 소형 빌라</td>
+                            <td>4.5점 (골목길 진입 및 사다리차 위치 확보 어려움)</td>
+                            <td>5~7시간</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </figure>
+
+            <p>저희는 이처럼 지역별 특성을 완벽하게 이해하고 맞춤형 이사 계획을 수립합니다. 특히 **방배동**은 <strong>효령로</strong>나 <strong>방배로</strong> 인근의 주차 규제가 심할 수 있으므로, 이사 차량 주차 허가 및 이웃과의 사전 협의가 성공적인 이사의 핵심입니다. 또한, **일원동이사**, **수서동이사** 등 강남 외곽 지역까지도 동일한 최고 수준의 서비스를 제공합니다.</p>
+
+            <h4>4. 이사 당일 및 마무리: 꼼꼼한 확인 및 피드백</h4>
+            <p>이사 당일, 저희 전문팀은 약속된 시간에 도착하여 신속하고 안전하게 포장 작업을 시작합니다. 중요한 것은 고객님께서 이사팀의 포장 과정을 꼼꼼히 확인하고, 파손 위험 물품에 대해 미리 알려주시는 것입니다. 도착지에서는 가구 배치 요청 및 최종적으로 빠진 짐은 없는지 확인합니다. 모든 작업이 완료된 후, 피해보상 관련 서류를 확인하고 서명해야 합니다. 저희는 **양재동이사**를 비롯한 서초구 전역에서 높은 고객 만족도를 유지하고 있으며, 이사 후에도 발생할 수 있는 문제에 대해 신속하게 대응합니다.</p>
+            
+            <div class="keyword-tags" aria-label="강남권 이사 연관 키워드">
+                <a href="#area">서초구 포장이사</a>
+                <a href="#area">강남구 고급이사</a>
+                <a href="#service">반포장이사 비용</a>
+                <a href="#service">보관이사 전문</a>
+                <a href="#area">우면동이사</a>
+                <a href="#area">원지동이사</a>
+                <a href="#area">내곡동이사</a>
+                <a href="#area">염곡동이사</a>
+                <a href="#area">청계산입구역이사</a>
+                <a href="#area">남부터미널역이사</a>
+                <a href="#area">교대역이사</a>
+                <a href="#area">강남역이사</a>
+                <a href="#area">서초동이사</a>
+                <a href="#area">송파구 포장이사</a>
+                <a href="#area">잠실 포장이사</a>
+                <a href="#area">용산구 이사</a>
+                <a href="#area">성동구 이사</a>
+                <a href="#area">강동구 이사</a>
+                <a href="#area">광진구 이사</a>
+                <a href="#service">아파트 이사</a>
+                <a href="#service">빌라 이사</a>
+                <a href="#service">오피스텔 이사</a>
+                <a href="#service">가구 배치 서비스</a>
+                <a href="#service">입주 청소</a>
+                <a href="#price">이사 견적 비교</a>
+                <a href="#inquiry">24시간 이사 상담</a>
+                <a href="#service">소형 이사</a>
+                <a href="#service">사무실 이사</a>
+            </div>
+            </section>
+        
+        <hr>
+
+        <section id="price">
+            <h2>💰 2026년 **방배동이사** 합리적인 **이사비용** 안내</h2>
+            <p><strong>이사비용</strong>은 짐의 양, 이사 거리, 작업 인원 수, 사다리차 이용 여부, 이사 날짜(손 없는 날, 주말 등)에 따라 크게 달라집니다. 투명하고 합리적인 **방배동 포장이사** 견적을 제공하기 위해, 저희는 무료 방문 견적을 원칙으로 하고 있습니다. 아래 표는 2026년 기준 **강남이사전문** 서비스의 일반적인 **포장이사** 비용 범위를 제시합니다. 정확한 견적은 반드시 현장 방문을 통해 받아보시길 바랍니다.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>이사 종류 및 평수</th>
+                        <th>작업 인원 (남자/여자)</th>
+                        <th>2026년 예상 비용 범위 (평일 기준, KRW)</th>
+                        <th>특징</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>원룸/투룸 (소형이사)</td>
+                        <td>2인 (1/1)</td>
+                        <td>500,000 ~ 900,000</td>
+                        <td>**방배동** 오피스텔, 원룸 **소형이사**에 최적화</td>
+                    </tr>
+                    <tr>
+                        <td>30평대 아파트 (**방배동 포장이사**)</td>
+                        <td>4인 (2/2)</td>
+                        <td>1,200,000 ~ 2,000,000</td>
+                        <td>가장 일반적인 **서초구 포장이사** 형태</td>
+                    </tr>
+                    <tr>
+                        <td>40평대 이상 (고급이사)</td>
+                        <td>5인 이상 (3/2~)</td>
+                        <td>2,000,000 ~ 5,000,000+</td>
+                        <td><strong>방배동</strong> 고급빌라/대형 아파트 **프리미엄 포장이사**, 특수 포장재 사용</td>
+                    </tr>
+                    <tr>
+                        <td>**반포장이사** (30평대 기준)</td>
+                        <td>3인 (2/1)</td>
+                        <td>800,000 ~ 1,400,000</td>
+                        <td>고객 직접 정리로 **이사비용** 절감 효과</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p>추가 비용 발생 요소:</p>
+            <ul>
+                <li><strong>사다리차 비용:</strong> 5층 이상 고층 작업, 진입로 협소 시 추가 요금 발생 가능.</li>
+                <li><strong>특수 품목:</strong> 피아노, 에어컨(탈부착), 붙박이장, 돌침대 등은 전문 인력 및 추가 비용이 필요합니다.</li>
+                <li><strong>보관이사:</strong> 보관 기간에 따른 창고 이용료 및 입/출고 이사 비용 별도 발생.</li>
+                <li><strong>이삿날:</strong> '손 없는 날' 및 주말은 평일 대비 10~30% 할증이 붙을 수 있습니다.</li>
+            </ul>
+
+            <a href="#inquiry" class="cta-button" aria-label="정확한 맞춤 견적 확인">정확한 맞춤 견적 지금 바로 확인</a>
+        </section>
+
+        <hr>
+
+        <section id="area">
+            <h2>📍 **강남이사** 전문가가 커버하는 주요 지역 키워드</h2>
+            <p>저희는 **방배동이사**를 주력으로 하며, 서초구와 강남구 전 지역에 걸쳐 전문적인 이사 서비스를 제공합니다. 복잡한 도심 환경에서의 이사는 일반 이사와 접근 방식이 달라야 합니다. **강남이사전문**가 갖춘 노하우로 고객님의 이사를 책임지겠습니다.</p>
+            
+            <h3>서초구 및 강남구 주요 이사 지역 (자동완성 및 연관 키워드 포함)</h3>
+            <p><strong>서초구:</strong> <strong>방배동 포장이사</strong>, **서초동이사**, **반포동이사** (고속터미널 인근), **잠원동이사**, **양재동이사**, **우면동이사**, **원지동이사**, **내곡동이사**, **염곡동이사**. 특히 **서초동**의 법조타운 인근 이사 및 **잠원동**의 신축 아파트 단지 이사에 강점을 가집니다.</p>
+            <p><strong>강남구:</strong> **역삼동이사**, **논현동이사**, **청담동이사**, **삼성동이사**, **대치동이사**, **도곡동이사**, **개포동이사**, **일원동이사**, **수서동이사**, **신사동이사**, **압구정동이사**. 이 중 **대치동**과 **도곡동**은 교육열이 높은 지역으로, 이사 시 학습 환경 보호와 서재 포장에 특별히 신경 씁니다. **압구정동**과 **청담동**은 **고급이사** 수요가 높아, 최고급 포장재와 숙련된 팀장급 인력을 배치합니다.</p>
+            <p><strong>함께 많이 찾는 키워드 (광역 지역):</strong> **송파구이사** (잠실, 가락동), **용산구이사** (한남동, 이촌동), **성동구이사** (옥수동, 금호동), **강동구이사**, **광진구이사** 등 인접 서울 핵심 지역도 프리미엄 서비스를 통해 이사가 가능합니다.</p>
+        </section>
+
+        <hr>
+
+        <section id="trust">
+            <h2>🤝 신뢰성 확보를 위한 공신력 있는 외부 정보 (총 5개 이상)</h2>
+            <p>신뢰할 수 있는 이사 업체를 선정하는 것은 매우 중요합니다. 고객님께 안전하고 투명한 서비스를 제공하기 위해, 이사와 관련된 공인된 정보를 제공합니다.</p>
+            
+            <ul class="trust-links">
+                <li><a href="https://www.law.go.kr/lsInfoP.do?lsiSeq=230630&efYd=20220610#0000" target="_blank" rel="nofollow noreferrer">이사화물 표준약관 (공정거래위원회)</a>: 이사 서비스 계약 전 반드시 확인해야 할 소비자 권리 및 의무 사항.</li>
+                <li><a href="https://www.nfa.go.kr/nfa/publicrelations/majorpolicies/ladder/" target="_blank" rel="nofollow noreferrer">소방청 사다리차 안전 기준 및 관리 지침</a>: 안전한 사다리차 이용을 위한 정부 기관의 지침 확인.</li>
+                <li><a href="https://www.gov.kr/main?a=AA020InfoCapForm&formId=AA020InfoCapForm038&b=AA020" target="_blank" rel="nofollow noreferrer">정부24 전입신고/주소변경 서비스 안내</a>: 이사 후 필수적인 행정 처리 절차.</li>
+                <li><a href="https://namu.wiki/w/%EC%9D%B4%EC%82%AC" target="_blank" rel="nofollow noreferrer">나무위키 이사 관련 항목</a>: 이사의 정의, 종류, 준비 사항 등에 대한 일반 정보.</li>
+                <li><a href="https://www.kostat.go.kr/portal/korea/kor_nw/2/6/1/index.board?bmode=read&bSeq=&aSeq=408901&pageNo=1&rowNum=10&navCount=10&sTarget=title&sTxt=" target="_blank" rel="nofollow noreferrer">통계청 주택 유형별 인구 이동 통계</a>: <strong>방배동</strong>을 포함한 서울 지역 인구 이동 현황 분석 자료.</li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <section id="inquiry">
+            <h2>📞 **방배동이사** 무료 견적 및 상담 문의 (체류 시간 극대화)</h2>
+            <p>**방배동 포장이사**는 복잡하고 까다로운 절차가 많습니다. 고객님의 정확한 이사 환경과 니즈를 파악하여 최적의 **이사비용**과 서비스를 제공하기 위해, 상세한 정보를 입력해 주시면 **강남이사전문** 상담원이 신속하게 연락드리겠습니다.</p>
+            
+            <div class="quote-form">
+                <form action="https://yourdomain.com/submit_quote" method="POST">
+                    <label for="name">성함</label>
+                    <input type="text" id="name" name="name" required placeholder="예: 홍길동">
+
+                    <label for="phone">연락처</label>
+                    <input type="tel" id="phone" name="phone" required pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" placeholder="예: 010-1234-5678">
+
+                    <label for="move_type">희망 이사 종류</label>
+                    <select id="move_type" name="move_type" required>
+                        <option value="">-- 선택하세요 --</option>
+                        <option value="포장이사">프리미엄 포장이사</option>
+                        <option value="반포장이사">실속형 반포장이사</option>
+                        <option value="보관이사">보관이사</option>
+                        <option value="소형이사">원룸/소형 이사</option>
+                        <option value="사무실이사">사무실 이사</option>
+                    </select>
+
+                    <label for="date">희망 이사 날짜 (2026년 기준)</label>
+                    <input type="date" id="date" name="date" required min="2026-01-01" max="2027-12-31">
+
+                    <label for="from_addr">출발지 주소 (동/층수)</label>
+                    <input type="text" id="from_addr" name="from_addr" required placeholder="예: 방배동 25층 아파트">
+
+                    <label for="to_addr">도착지 주소 (동/층수)</label>
+                    <input type="text" id="to_addr" name="to_addr" required placeholder="예: 삼성동 12층 빌라">
+                    
+                    <label for="size">이사 짐 규모 (평수 또는 방 개수)</label>
+                    <input type="text" id="size" name="size" placeholder="예: 32평 / 방 3개">
+
+                    <label for="option">특이 사항 및 요청 사항 (사다리차 사용 여부, 에어컨 설치 등 상세 기재)</label>
+                    <textarea id="option" name="option" rows="5" placeholder="예: 사다리차 이용 필요, 붙박이장 분해/조립 요청, 귀중품 별도 포장 요청"></textarea>
+
+                    <button type="submit" aria-label="견적 요청서 제출">무료 방문 견적 요청서 제출</button>
+                </form>
+            </div>
+            
+            <h3>신속한 유선 상담</h3>
+            <p>전화: **010-1234-5678** (24시간 상담 가능)</p>
+        </section>
+
+        <hr>
+
+        <section id="faq" class="faq">
+            <h2>❓ 자주 묻는 질문 (FAQ)</h2>
+            <dl>
+                <dt tabindex="0" aria-expanded="false" class="faq-toggle">Q. **방배동 포장이사**는 언제 예약해야 가장 좋은가요?</dt>
+                <dd>A. 이사 성수기(봄, 가을, '손 없는 날')의 경우 최소 2개월 전, 비수기에도 2주 전에는 예약하시는 것을 권장합니다. **강남이사전문** 업체는 예약이 빨리 마감되므로 서두르시는 것이 좋습니다.</dd>
+
+                <dt tabindex="0" aria-expanded="false" class="faq-toggle">Q. **이사비용**에 보험료가 포함되어 있나요?</dt>
+                <dd>A. 네, 저희는 고객님의 짐을 안전하게 보호하기 위해 법적으로 의무화된 '이사화물 피해보상 이행보증보험'에 가입되어 있으며, 이는 기본 **이사비용**에 포함되어 있습니다.</dd>
+
+                <dt tabindex="0" aria-expanded="false" class="faq-toggle">Q. **반포장이사**와 **포장이사**의 차이점은 무엇인가요?</dt>
+                <dd>A. **포장이사**는 포장, 운반, 정리 정돈까지 모든 것을 저희가 수행합니다. **반포장이사**는 저희가 포장, 운반을 하고 도착지에서 큰 짐만 정리해 드리며, 잔짐(주방용품, 의류 등)은 고객님께서 직접 정리하는 방식입니다. **이사비용**은 **반포장이사**가 더 저렴합니다.</dd>
+                
+                <dt tabindex="0" aria-expanded="false" class="faq-toggle">Q. **보관이사** 기간 동안 짐 관리는 어떻게 이루어지나요?</dt>
+                <dd>A. 짐은 전용 보관 창고에 안전하게 보관되며, 항온/항습 시스템을 통해 곰팡이나 습기 걱정 없이 최적의 상태로 관리됩니다. **방배동이사**의 경우, 특히 고가품이 많아 창고 환경에 더욱 신경 쓰고 있습니다.</dd>
+            </dl>
+        </section>
+
     </main>
-  </body>
-</html>
+
+    <footer>
+        <p>Copyright &copy; 2026 **방배동이사** 전문 이사 서비스. All Rights Reserved. | 사업자 등록번호: [Your Business ID] | 주소: 서울특별시 서초구 [Your Address]</p>
+        <p>문의 전화: 010-1234-5678 | 이메일: contact@yourdomain.com</p>
+    </footer>
+
+    <script>
+        // FAQ 아코디언 기능 (접기/펼치기)
+        document.querySelectorAll('.faq-toggle').forEach((dt) => {
+            dt.addEventListener('click', () => {
+                const isActive = dt.classList.toggle('active');
+                dt.setAttribute('aria-expanded', isActive);
+            });
+            dt.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    dt.click();
+                }
+            });
+        });
+
+        // 폼 유효성 검사 (간단한 예시)
+        document.querySelector('.quote-form form').addEventListener('submit', function(e) {
+            const phone = document.getElementById('phone').value;
+            const phonePattern = /^\d{2,3}-\d{3,4}-\d{4}$/;
+            if (!phonePattern.test(phone)) {
+                alert('연락처를 올바른 형식(예: 010-1234-5678)으로 입력해주세요.');
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+
+
+  
